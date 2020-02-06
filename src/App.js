@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, useParams, useRouteMatch } from 'react-router-dom';
 
 const links = ['1', '2', '3', '4', '5'];
 
@@ -15,20 +15,8 @@ function App() {
 
 
       <Switch>
-        <Route path="/1">
-          <Comp1 />
-        </Route>
-        <Route path="/2">
-          <Comp2 />
-        </Route>
-        <Route path="/3">
-          <Comp3 />
-        </Route>
-        <Route path='/4'>
-          <Comp4 />
-        </Route>
-        <Route path='/5'>
-          <Comp5 />
+        <Route path="/:id">
+          <RouteParam />
         </Route>
       </Switch>
       </div>
@@ -64,6 +52,14 @@ function Comp4() {
 function Comp5() {
   return (
     <h1>comp5</h1>
+  )
+}
+
+function RouteParam() {
+  const param = useParams();
+  console.log(param);
+  return (
+    <h1>{param.id}</h1>
   )
 }
 
